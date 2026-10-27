@@ -28,6 +28,27 @@ flowchart LR
 
 The main pipeline samples R1 at three temperatures and combines events for base-tree samples; R2a and R2c use sample batches while R2b reads the observation data. Numeric ages and error magnitudes from R1 are preserved when R2c adds descriptors. These are concrete implementation boundaries rather than a general correctness guarantee: event alignment is positional, and the main API requests JSON objects rather than enforcing the declared JSON schemas. [Methods and exact merge rules](docs/methods.md) · [Export contracts](docs/exports.md).
 
+## 🕸️ Seed-Guided Document-Graph Recovery
+
+An extraction result can also guide the search for missing information. Once a model has identified some samples and their age/error relationships, trusted relations can serve as hooks into the source document. The graph then uses nearby, similarly organized records to investigate missing bindings. The research idea is to **turn existing extraction relations into graph constraints and use document structure to propose additional relationships**.
+
+The [core implementation](research/seeded_graph/seeded_document_forest.py) represents DOCX sentences, table cells, value/error pairs and sample entities as a weighted graph. Edges encode local text adjacency, table geometry and explicit entity mentions. For a known sample/value/error relation, Dijkstra selects the lowest-cost reachable source occurrence. A low-resistance seed channel anchors that relation for subsequent propagation.
+
+Sample roots then act as fixed boundaries for a graph-Laplacian harmonic extension that minimizes Dirichlet energy. Together with translation of entity-to-value offsets in tables, this produces candidate bindings not present in the seed extraction. Least-cost paths ground known relations; minimum-energy propagation and structural templates extend the candidate search.
+
+```mermaid
+flowchart LR
+    D[Text and tables] --> G[Weighted document graph]
+    S[Existing extraction relations] --> A[Least-cost grounding and seed binding]
+    G --> A
+    A --> P[Template transfer and minimum-energy propagation]
+    P --> C[Candidate relations and source evidence]
+```
+
+Consider a fictional table where samples A101 and A102 are known, but only A101 is bound to `120 ± 1`. That relation helps locate the sample, age and uncertainty positions. Applying the same structure to A102's row can propose `A102—130 ± 2`. This illustrates how an existing local result can guide relation recovery, rather than treating every value as an independent extraction target. The repository's [synthetic example](examples/graph_demo.py) checks this execution path.
+
+Outputs retain candidate relations, graph potentials and energies, source evidence and template paths for review. This remains an independent recovery experiment; the controller does not automatically write candidates back into the main extraction state. See [Method and data contracts](docs/graph_recovery.md).
+
 ## 🧭 Versions and related experiments
 
 | Component | Preserved entry | Role |
