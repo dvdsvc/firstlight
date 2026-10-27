@@ -1,0 +1,113 @@
+{
+  "data_kind": "synthetic; expected observations supplied by fixture, no model call",
+  "source_text_preserved_outside_augmented_copy": true,
+  "control_count": 3,
+  "expected_relation_count": 5,
+  "injected_text_contains_control": true,
+  "exact_observations": {
+    "run_id": "synthetic:honeypot:1",
+    "status": "pass",
+    "controls": [
+      {
+        "control_id": "hp_upb_relation_split",
+        "status": "pass",
+        "fail_reasons": [],
+        "expected_relation_count": 2,
+        "observed_relation_count": 2
+      },
+      {
+        "control_id": "hp_upb_entity_binding",
+        "status": "pass",
+        "fail_reasons": [],
+        "expected_relation_count": 2,
+        "observed_relation_count": 2
+      },
+      {
+        "control_id": "hp_upb_parse_variant",
+        "status": "pass",
+        "fail_reasons": [],
+        "expected_relation_count": 1,
+        "observed_relation_count": 1
+      }
+    ],
+    "skipped_controls": [],
+    "fail_reasons": []
+  },
+  "one_relation_omitted": {
+    "run_id": "synthetic:honeypot:1",
+    "status": "fail",
+    "controls": [
+      {
+        "control_id": "hp_upb_relation_split",
+        "status": "fail",
+        "fail_reasons": [
+          "merged"
+        ],
+        "expected_relation_count": 2,
+        "observed_relation_count": 1
+      },
+      {
+        "control_id": "hp_upb_entity_binding",
+        "status": "pass",
+        "fail_reasons": [],
+        "expected_relation_count": 2,
+        "observed_relation_count": 2
+      },
+      {
+        "control_id": "hp_upb_parse_variant",
+        "status": "pass",
+        "fail_reasons": [],
+        "expected_relation_count": 1,
+        "observed_relation_count": 1
+      }
+    ],
+    "skipped_controls": [],
+    "fail_reasons": [
+      "merged"
+    ]
+  },
+  "wrong_sample": {
+    "run_id": "synthetic:honeypot:1",
+    "status": "fail",
+    "controls": [
+      {
+        "control_id": "hp_upb_relation_split",
+        "status": "fail",
+        "fail_reasons": [
+          "merged",
+          "misbound"
+        ],
+        "expected_relation_count": 2,
+        "observed_relation_count": 2
+      },
+      {
+        "control_id": "hp_upb_entity_binding",
+        "status": "pass",
+        "fail_reasons": [],
+        "expected_relation_count": 2,
+        "observed_relation_count": 2
+      },
+      {
+        "control_id": "hp_upb_parse_variant",
+        "status": "pass",
+        "fail_reasons": [],
+        "expected_relation_count": 1,
+        "observed_relation_count": 1
+      }
+    ],
+    "skipped_controls": [],
+    "fail_reasons": [
+      "merged",
+      "misbound"
+    ]
+  },
+  "recovery_tasks": [
+    {
+      "type": "run_local_coverage_completion",
+      "trigger": "honeypot",
+      "reason": "merged"
+    }
+  ],
+  "control_sample_removed_before_write": true,
+  "real_job_status": "completed"
+}

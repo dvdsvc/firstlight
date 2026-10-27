@@ -1,0 +1,85 @@
+{
+  "date": "2026-10-27",
+  "environment": {
+    "python": "3.12.13",
+    "openai": "2.54.0",
+    "mcp": "1.30.0",
+    "python-docx": "1.2.0",
+    "openpyxl": "3.1.5",
+    "python-dotenv": "1.2.4",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1"
+  },
+  "checks": {
+    "combined_tests": {
+      "exit_code": 0,
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "tests_passed": 42
+    },
+    "staged_demo": {
+      "exit_code": 0,
+      "arguments": [
+        "-m",
+        "examples.staged_demo"
+      ]
+    },
+    "controls_demo": {
+      "exit_code": 0,
+      "arguments": [
+        "-m",
+        "examples.offline_demo"
+      ]
+    },
+    "graph_demo": {
+      "exit_code": 0,
+      "arguments": [
+        "-m",
+        "examples.graph_demo"
+      ]
+    },
+    "mcp_smoke": {
+      "exit_code": 0,
+      "arguments": [
+        "-m",
+        "scripts.mcp_smoke"
+      ]
+    },
+    "live_help": {
+      "exit_code": 0,
+      "arguments": [
+        "-m",
+        "scripts.run_staged",
+        "--help"
+      ]
+    },
+    "export_help": {
+      "exit_code": 0,
+      "arguments": [
+        "-m",
+        "scripts.export_linked",
+        "--help"
+      ]
+    },
+    "agent_help": {
+      "exit_code": 0,
+      "arguments": [
+        "-m",
+        "examples.run_live",
+        "--help"
+      ]
+    },
+    "early_tests": {
+      "exit_code": 0,
+      "tests_passed": 12
+    }
+  },
+  "model_calls": 0,
+  "scope": "Independent local presentation environment; fictional fixtures and mechanical original-output audit, not extraction accuracy"
+}

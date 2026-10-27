@@ -1,0 +1,45 @@
+{
+  "kind": "File inventory, not unique-paper count or accuracy benchmark. Collections may overlap. Empty final files do not establish a failure cause.",
+  "collections": {
+    "doi_output/json": {
+      "json_artifacts": 622,
+      "final_artifacts": 310,
+      "final_samples": 1752,
+      "final_spots": 9789,
+      "final_events": 6140,
+      "empty_final_artifacts": 46
+    },
+    "output": {
+      "json_artifacts": 4,
+      "final_artifacts": 0,
+      "final_samples": 0,
+      "final_spots": 0,
+      "final_events": 0,
+      "empty_final_artifacts": 0
+    },
+    "output/json": {
+      "json_artifacts": 44,
+      "final_artifacts": 21,
+      "final_samples": 168,
+      "final_spots": 1321,
+      "final_events": 191,
+      "empty_final_artifacts": 0
+    },
+    "v1output/json": {
+      "json_artifacts": 46,
+      "final_artifacts": 23,
+      "final_samples": 189,
+      "final_spots": 1350,
+      "final_events": 282,
+      "empty_final_artifacts": 0
+    },
+    "v2output": {
+      "json_artifacts": 6,
+      "final_artifacts": 3,
+      "final_samples": 0,
+      "final_spots": 0,
+      "final_events": 0,
+      "empty_final_artifacts": 3
+    }
+  }
+}

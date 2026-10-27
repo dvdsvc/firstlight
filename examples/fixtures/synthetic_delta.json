@@ -1,0 +1,75 @@
+{
+  "profile_id": "upb_in_situ",
+  "operation": "discover",
+  "sample_patches": [
+    {
+      "sample_id": "js-jch",
+      "sample_attributes_add": {
+        "RockClass": "tuff"
+      },
+      "sample_evidence": {
+        "evidence_text": "Sample js-jch is a tuff.",
+        "source_locator": "Sample description"
+      },
+      "method_context_add": {
+        "isotope_system": "U-Pb",
+        "technique": "LA-ICP-MS",
+        "SampleMaterial": "zircon",
+        "scope": "self"
+      },
+      "method_evidence": {
+        "evidence_text": "Zircons were analyzed by LA-ICP-MS.",
+        "source_locator": "Methods"
+      },
+      "raw_observations_add": [
+        {
+          "id": "js-jch-01",
+          "unit_type": "spot",
+          "fields": {
+            "Analysis_ID": "js-jch-01",
+            "U": 200
+          },
+          "evidence": {
+            "evidence_text": "js-jch-01",
+            "source_locator": "Table 1"
+          }
+        }
+      ],
+      "aggregate_observations_add": [
+        {
+          "id": "result_js_jch_134",
+          "fields": {
+            "Age_Text": "134 Ma",
+            "AgeUnc_Text": "2 Ma",
+            "AgeIntpnType": "peak age"
+          },
+          "source_raw_observation_ids": [
+            "js-jch-01"
+          ],
+          "evidence": {
+            "evidence_text": "js-jch has a 134 +/- 2 Ma peak",
+            "source_locator": "Figure 4"
+          }
+        }
+      ],
+      "author_inferences_add": [
+        {
+          "id": "event_js_jch_eruption",
+          "aggregate_observation_ids": [
+            "result_js_jch_134"
+          ],
+          "fields": {
+            "AgeIntpnClass": "eruption age",
+            "AgeIntprtdDesc": "volcanic eruption"
+          },
+          "evidence": {
+            "evidence_text": "the volcanic activity erupted at 134 +/- 2 Ma",
+            "source_locator": "Discussion"
+          }
+        }
+      ]
+    }
+  ],
+  "conflicts": [],
+  "uncovered": []
+}

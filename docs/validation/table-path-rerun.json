@@ -1,0 +1,32 @@
+{
+  "validation_date": "2026-10-26",
+  "model_calls": 0,
+  "source_markdown_sha256": "a7bc7b4e2374f94032c1e6ff9fd9b5d09982641d9fc8623d3837d3f5dae62f35",
+  "source_r1_sha256": "6b1eb84052b4b6a7f7d13b73c42322b7d2c9a90d4de91f1d9ad08d4b705f6ef4",
+  "cases": [
+    {
+      "sample": "js-jch",
+      "hooks": [
+        "js-jch-01",
+        "js-jch-18",
+        "js-jch-28"
+      ],
+      "recovered_records": 21,
+      "matches_existing_r1_spot_list_in_order": true,
+      "physical_table_segments": 1,
+      "reference_kind": "previous extraction, not independent exhaustive gold"
+    },
+    {
+      "sample": "js-09",
+      "hooks": [
+        "js-09-01",
+        "js-09-25",
+        "js-09-40"
+      ],
+      "recovered_records": 29,
+      "matches_existing_r1_spot_list_in_order": true,
+      "physical_table_segments": 2,
+      "reference_kind": "previous extraction, not independent exhaustive gold"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "transport": "stdio",
+  "tool_count": 11,
+  "tools": [
+    "audit_coverage",
+    "evaluate_honeypot",
+    "extract_profile_delta",
+    "extract_upb_in_situ",
+    "inject_honeypot",
+    "list_profiles",
+    "plan_document_tools_tool",
+    "prepare_honeypot",
+    "profile_contract",
+    "route_geochronology",
+    "validate_delta"
+  ],
+  "registered_profiles": 17,
+  "deterministic_calls_passed": 7,
+  "honeypot_evaluation_status": "pass",
+  "model_calls": 0
+}

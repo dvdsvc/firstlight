@@ -1,0 +1,8 @@
+{
+  "candidate_threshold": 0.2,
+  "candidate_ratio": 0.6,
+  "seed_grounding_limit": 120.0,
+  "ocr_repair_limit": 4.5,
+  "text_heading_boundary": "hard_numbered_scope",
+  "section_owner_policy": "title_samples_only"
+}

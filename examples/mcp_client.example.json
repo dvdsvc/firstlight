@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "geochronology": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/ABSOLUTE/PATH/TO/structured-extract",
+        "run",
+        "--locked",
+        "--extra",
+        "agent",
+        "geochron-mcp"
+      ]
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "copied_source_records": 55,
+  "python_files_parsed": 54,
+  "local_document_links_checked": 137,
+  "historical_artifacts_checked": 722,
+  "readme_sections_each": 7,
+  "failures": [],
+  "scan_scope": "Candidate text patterns, file inventory and source hashes; not an exhaustive rights/security review",
+  "date": "2026-10-27",
+  "original_baseline_files_unchanged": 1394,
+  "selected_original_records_unchanged": 55,
+  "timing": "Content checks before final root checksum/ZIP creation; final inventory is recorded in owner review"
+}

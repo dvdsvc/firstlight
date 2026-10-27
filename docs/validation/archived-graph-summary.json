@@ -1,0 +1,140 @@
+{
+  "evidence_type": "archived research artifacts; not fresh benchmark or exhaustive gold evaluation",
+  "artifacts": [
+    {
+      "source_artifact": "huguang_js_jch_dispersed_seeded_path.json",
+      "source_sha256": "8d6739effa734686dd9573b0c1766c3f7bcbaa5cf53f96aa679505b45c930d1a",
+      "sample": "js-jch",
+      "hooks": [
+        "js-jch-01",
+        "js-jch-18",
+        "js-jch-28"
+      ],
+      "record_count": 21,
+      "table_indexes": [
+        0
+      ]
+    },
+    {
+      "source_artifact": "huguang_js09_cross_table_seeded_path.json",
+      "source_sha256": "ba9ffcd142fcc3b4c86e73c6b6548b0acede8a2fb09de0f9ca36872825a1fbad",
+      "sample": "js-09",
+      "hooks": [
+        "js-09-01",
+        "js-09-25",
+        "js-09-40"
+      ],
+      "record_count": 29,
+      "table_indexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "source_artifact": "seeded_document_forest_ten_papers.json",
+      "source_sha256": "1e3af2cc9a65e594a2ce72ad4d9832ec31d33f3077e97ae69fcb934bf0390a0f",
+      "cases": [
+        {
+          "name": "胡广2011",
+          "status": "ok",
+          "graph_nodes": 2416,
+          "known_bindings": 4,
+          "fixed_seed_channels": 4,
+          "broad_diffusion_candidates": 12,
+          "translated_template_candidates": 0,
+          "candidate_forest_size": 7
+        },
+        {
+          "name": "王非2010",
+          "status": "ok",
+          "graph_nodes": 1158,
+          "known_bindings": 74,
+          "fixed_seed_channels": 74,
+          "broad_diffusion_candidates": 109,
+          "translated_template_candidates": 0,
+          "candidate_forest_size": 23
+        },
+        {
+          "name": "李祥辉2011",
+          "status": "ok",
+          "graph_nodes": 5670,
+          "known_bindings": 9,
+          "fixed_seed_channels": 9,
+          "broad_diffusion_candidates": 18,
+          "translated_template_candidates": 9,
+          "candidate_forest_size": 11
+        },
+        {
+          "name": "SIMS-dinosaur",
+          "status": "ok",
+          "graph_nodes": 5931,
+          "known_bindings": 7,
+          "fixed_seed_channels": 7,
+          "broad_diffusion_candidates": 7,
+          "translated_template_candidates": 0,
+          "candidate_forest_size": 5
+        },
+        {
+          "name": "马之力",
+          "status": "ok",
+          "graph_nodes": 3800,
+          "known_bindings": 5,
+          "fixed_seed_channels": 5,
+          "broad_diffusion_candidates": 5,
+          "translated_template_candidates": 0,
+          "candidate_forest_size": 0
+        },
+        {
+          "name": "He-2013",
+          "status": "ok",
+          "graph_nodes": 5931,
+          "known_bindings": 4,
+          "fixed_seed_channels": 3,
+          "broad_diffusion_candidates": 3,
+          "translated_template_candidates": 0,
+          "candidate_forest_size": 3
+        },
+        {
+          "name": "Liu-2016",
+          "status": "ok",
+          "graph_nodes": 648,
+          "known_bindings": 47,
+          "fixed_seed_channels": 47,
+          "broad_diffusion_candidates": 47,
+          "translated_template_candidates": 0,
+          "candidate_forest_size": 1
+        },
+        {
+          "name": "姜杨",
+          "status": "ok",
+          "graph_nodes": 678,
+          "known_bindings": 2,
+          "fixed_seed_channels": 2,
+          "broad_diffusion_candidates": 1,
+          "translated_template_candidates": 0,
+          "candidate_forest_size": 1
+        },
+        {
+          "name": "任俊",
+          "status": "ok",
+          "graph_nodes": 1004,
+          "known_bindings": 37,
+          "fixed_seed_channels": 37,
+          "broad_diffusion_candidates": 86,
+          "translated_template_candidates": 14,
+          "candidate_forest_size": 34
+        },
+        {
+          "name": "Zhang-FQ-2014",
+          "status": "ok",
+          "graph_nodes": 4752,
+          "known_bindings": 4,
+          "fixed_seed_channels": 3,
+          "broad_diffusion_candidates": 1,
+          "translated_template_candidates": 0,
+          "candidate_forest_size": 1
+        }
+      ]
+    }
+  ]
+}

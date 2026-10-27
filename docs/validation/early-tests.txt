@@ -1,0 +1,17 @@
+test_delta_contract_accepts_valid_tree_patch (test_geochron_agent_v3.ProfileTests.test_delta_contract_accepts_valid_tree_patch) ... ok
+test_delta_contract_rejects_foreign_method (test_geochron_agent_v3.ProfileTests.test_delta_contract_rejects_foreign_method) ... ok
+test_id_tims_grain_words_do_not_imply_in_situ_profile (test_geochron_agent_v3.RouterTests.test_id_tims_grain_words_do_not_imply_in_situ_profile) ... ok
+test_literature_shrimp_mentions_do_not_override_dominant_la_icp_ms (test_geochron_agent_v3.RouterTests.test_literature_shrimp_mentions_do_not_override_dominant_la_icp_ms) ... ok
+test_routes_la_icp_ms (test_geochron_agent_v3.RouterTests.test_routes_la_icp_ms) ... ok
+test_coverage_context_keeps_results_and_events_under_sample (test_geochron_agent_v3.StateTests.test_coverage_context_keeps_results_and_events_under_sample) ... ok
+test_delta_reducer_preserves_sample_tree (test_geochron_agent_v3.StateTests.test_delta_reducer_preserves_sample_tree) ... ok
+test_delta_reducer_rejects_arar_disguised_as_upb (test_geochron_agent_v3.StateTests.test_delta_reducer_rejects_arar_disguised_as_upb) ... ok
+test_event_reference_must_exist_in_same_sample_tree (test_geochron_agent_v3.StateTests.test_event_reference_must_exist_in_same_sample_tree) ... ok
+test_job_queue_accepts_batch_and_records_unknown_tool_request (test_geochron_agent_v3.StateTests.test_job_queue_accepts_batch_and_records_unknown_tool_request) ... ok
+test_router_fallback_creates_profile_job (test_geochron_agent_v3.StateTests.test_router_fallback_creates_profile_job) ... ok
+test_state_digest_does_not_repeat_paper_text (test_geochron_agent_v3.StateTests.test_state_digest_does_not_repeat_paper_text) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.000s
+
+OK

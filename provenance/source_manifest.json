@@ -1,0 +1,392 @@
+{
+  "snapshot_date": "2026-10-27",
+  "git_evidence": "Main extraction folder is an untracked subtree of a broader workspace; no component-level commit or personal-authorship attribution is asserted.",
+  "files": [
+    {
+      "source_snapshot": "main-extraction",
+      "source_relative_path": "pipeline.py",
+      "path": "pipeline.py",
+      "sha256": "2fc2427a0fb2261b1cec7b578413bbf3d419893853a4a89f52c38303a74d6857",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "main-extraction",
+      "source_relative_path": "pipeline_v2.py",
+      "path": "pipeline_v2.py",
+      "sha256": "5fccbe76bfcd6746f77e9fbd42c7fc1acb9aa1e46ee0d78a62ab71929d04b47d",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "main-extraction",
+      "source_relative_path": "prompts.py",
+      "path": "prompts.py",
+      "sha256": "93dd3fc796f8adab8f59c93b457334ca2b6165b92df3332b75e612830a1e2ee0",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "main-extraction",
+      "source_relative_path": "prompts_v2.py",
+      "path": "prompts_v2.py",
+      "sha256": "11a0293bc19ede177461e1ec06d2d6d21c4471cee6eb8cf3243adc3c4414ee7d",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "main-extraction",
+      "source_relative_path": "run_layer1.py",
+      "path": "run_layer1.py",
+      "sha256": "5fde39f0ae316ae417ed6d7a59ae36ce8a36e03c94e92992d2b71ade60000c9a",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "main-extraction",
+      "source_relative_path": "run_layer2a.py",
+      "path": "run_layer2a.py",
+      "sha256": "1e1fa03065cc283e1c4cdab558616494a9ae9278de73dca22f8f1872f27bf4bb",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "main-extraction",
+      "source_relative_path": "run_layer2b.py",
+      "path": "run_layer2b.py",
+      "sha256": "948abd0c47c13c57a23f2fe00536f537db096898d9f8fc801fe8bbc6cff58ad3",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "main-extraction",
+      "source_relative_path": "run_layer2c.py",
+      "path": "run_layer2c.py",
+      "sha256": "3aa1c8037bfa7206816dbb4d021eaeec772ac1f851c915b231e130fef1dd0797",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "main-extraction",
+      "source_relative_path": "filter.py",
+      "path": "filter.py",
+      "sha256": "612bc10bca759172a3ca0ed2d825a5128ce73ac7b6ada6c777bbbd38cc0d180c",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "main-extraction",
+      "source_relative_path": "vocab.py",
+      "path": "vocab.py",
+      "sha256": "7ca7f661041cc9278feae713cdda80b587d498fd49565acbc8fc4c3e4531fe9c",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "main-extraction",
+      "source_relative_path": "export_total.py",
+      "path": "export_total.py",
+      "sha256": "d2027dd9355d8a4ccb3389c79210b5e8c78bc790e560628fbe31f477039f7a31",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "main-extraction",
+      "source_relative_path": "merge_tree_xlsx.py",
+      "path": "merge_tree_xlsx.py",
+      "sha256": "6a01a15ae8252a1363924d30be9b2cd29f6cfd0a7b0648cf263d1a80f0c3d348",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "controls-research",
+      "source_relative_path": "v3_stage/geochron_agent_v3/__init__.py",
+      "path": "geochron_agent_v3/__init__.py",
+      "sha256": "f68d6cdeda27551d147026b883166c2ceb98ed74f9fc1604c7f07e93e2a58ca6",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "controls-research",
+      "source_relative_path": "v3_stage/geochron_agent_v3/contracts.py",
+      "path": "geochron_agent_v3/contracts.py",
+      "sha256": "3747fe82dc412f99277cb4d937dd8a520a23da11ffb774f2d125de83dedddc17",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "controls-research",
+      "source_relative_path": "v3_stage/geochron_agent_v3/controller.py",
+      "path": "geochron_agent_v3/controller.py",
+      "sha256": "04ac4994ac2ebb0d926fca54d3cf78b4fd8791081f16e73d5190555956ea04fb",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "controls-research",
+      "source_relative_path": "v3_stage/geochron_agent_v3/honeypot.py",
+      "path": "geochron_agent_v3/honeypot.py",
+      "sha256": "397a8459e5ed826da024157e19b2c597f8cbca2ba9b42f43a0da1aada9ea48e1",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "controls-research",
+      "source_relative_path": "v3_stage/geochron_agent_v3/mcp_server.py",
+      "path": "geochron_agent_v3/mcp_server.py",
+      "sha256": "d13c587675e4bd92818fb4e238d1b4b1179c22285ffa1c7758abd4314507b6ac",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "controls-research",
+      "source_relative_path": "v3_stage/geochron_agent_v3/profiles/__init__.py",
+      "path": "geochron_agent_v3/profiles/__init__.py",
+      "sha256": "945e8a43a04e7abca09389f9e88a49d38d1aa3c044f90745620c449c032ec70f",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "controls-research",
+      "source_relative_path": "v3_stage/geochron_agent_v3/profiles/standard.py",
+      "path": "geochron_agent_v3/profiles/standard.py",
+      "sha256": "b54a4f07687972b1154c655c2cce26acc1bd00612dc53e48235674d8e0919042",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "controls-research",
+      "source_relative_path": "v3_stage/geochron_agent_v3/profiles/upb_in_situ.py",
+      "path": "geochron_agent_v3/profiles/upb_in_situ.py",
+      "sha256": "8d2dc41296ccd5cb8c526d4aa72514e786cedc75ea412c51723e0bf08d294c3e",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "controls-research",
+      "source_relative_path": "v3_stage/geochron_agent_v3/registry.py",
+      "path": "geochron_agent_v3/registry.py",
+      "sha256": "19879e55aeabf439ac4bf6eaccd4bcf0de079e6fc4ee7d5bd7602c384749b714",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "controls-research",
+      "source_relative_path": "v3_stage/geochron_agent_v3/router.py",
+      "path": "geochron_agent_v3/router.py",
+      "sha256": "4bb35126182768189121382f13e100f8e0bfa5f8f8b02b24a8c06ad3dc5b968e",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "controls-research",
+      "source_relative_path": "v3_stage/geochron_agent_v3/service.py",
+      "path": "geochron_agent_v3/service.py",
+      "sha256": "fa6f514ffd2d40ff247fb0dccec5a23084f46f492f46c56fff0d666102265469",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "controls-research",
+      "source_relative_path": "v3_stage/geochron_agent_v3/state.py",
+      "path": "geochron_agent_v3/state.py",
+      "sha256": "b3271e160dbf781605669955b23f8881fb32c3d912effac60d1e96d0b4d49e3a",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "controls-research",
+      "source_relative_path": "v3_stage/geochron_agent_v3/tools.py",
+      "path": "geochron_agent_v3/tools.py",
+      "sha256": "cc8275da6f42e5636c6ca8190f1297e58c659a9b844aa834f77607312e54d896",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "controls-research",
+      "source_relative_path": "v3_stage/tests/test_geochron_agent_v3.py",
+      "path": "tests/test_geochron_agent_v3.py",
+      "sha256": "0237046043e270242b6c49e90f7ec9a0aca600922487a475bead56a8577facce",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "controls-research",
+      "source_relative_path": "v3_stage/geochron_agent_v3/README.md",
+      "path": "provenance/original_README.md",
+      "sha256": "f8219e1907bda37a21f7145f98ed0b4259925d861e4e4e338f5edeb07ce4126e",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "controls-research",
+      "source_relative_path": "seeded_path_probe.py",
+      "path": "research/seeded_graph/seeded_path_probe.py",
+      "sha256": "82e0d6b16b211953502870d8647cd2ba4890d1b1fbaf7ba07cba38cbd7bd48cd",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "controls-research",
+      "source_relative_path": "seeded_document_forest.py",
+      "path": "research/seeded_graph/seeded_document_forest.py",
+      "sha256": "a05c5a259ac48bef6bd52ddf756da47020d486c67890fa53b5ca664afad4e98f",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "controls-research",
+      "source_relative_path": "document_graph_completion_probe.py",
+      "path": "research/seeded_graph/document_graph_completion_probe.py",
+      "sha256": "e414f28c6d58efa815a7fa479ba8998fb77e28da9928aae8b10695caabb82a6e",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "controls-research",
+      "source_relative_path": "seeded_document_forest_config.json",
+      "path": "research/seeded_graph/seeded_document_forest_config.json",
+      "sha256": "c68abc596c0473f62fbe77930ece9cd69cc431700eebf34c6746c0dd55fbe5d0",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "previous-showcase-support",
+      "source_relative_path": "scripts/mcp_smoke.py",
+      "path": "scripts/mcp_smoke.py",
+      "sha256": "a5e4b8378bea832e0d980e8f9b3bc35489a48d32858c6a02417ce6e113a746df",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "main-extraction",
+      "source_relative_path": "geochron_agent_v3/README.md",
+      "path": "versions/early_v3/geochron_agent_v3/README.md",
+      "sha256": "e9af3fc6ece7708fcc378402dfae1248ebef801a4358328459fc26e966a50256",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "main-extraction",
+      "source_relative_path": "geochron_agent_v3/__init__.py",
+      "path": "versions/early_v3/geochron_agent_v3/__init__.py",
+      "sha256": "f68d6cdeda27551d147026b883166c2ceb98ed74f9fc1604c7f07e93e2a58ca6",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "main-extraction",
+      "source_relative_path": "geochron_agent_v3/contracts.py",
+      "path": "versions/early_v3/geochron_agent_v3/contracts.py",
+      "sha256": "9862f2c9fcd4385956d573747f45a73c656b602774cfccedebb14f04d188d11c",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "main-extraction",
+      "source_relative_path": "geochron_agent_v3/controller.py",
+      "path": "versions/early_v3/geochron_agent_v3/controller.py",
+      "sha256": "0cdb02de4e5c7b40ca578009bb700cc776ce90c6f2439c283b75a876e7892a24",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "main-extraction",
+      "source_relative_path": "geochron_agent_v3/mcp_server.py",
+      "path": "versions/early_v3/geochron_agent_v3/mcp_server.py",
+      "sha256": "03d6e7b621f29ea047ba18ed3c276f35aebcd80b3f2e3b91e1df53f224bb853a",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "main-extraction",
+      "source_relative_path": "geochron_agent_v3/profiles/__init__.py",
+      "path": "versions/early_v3/geochron_agent_v3/profiles/__init__.py",
+      "sha256": "945e8a43a04e7abca09389f9e88a49d38d1aa3c044f90745620c449c032ec70f",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "main-extraction",
+      "source_relative_path": "geochron_agent_v3/profiles/upb_in_situ.py",
+      "path": "versions/early_v3/geochron_agent_v3/profiles/upb_in_situ.py",
+      "sha256": "923183e0063dc76e7c0f21f38a6168413075cf59cb29c65a42df70be164a90f4",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "main-extraction",
+      "source_relative_path": "geochron_agent_v3/registry.py",
+      "path": "versions/early_v3/geochron_agent_v3/registry.py",
+      "sha256": "927a607d22ad31c5f4bddde3d25b9c5dea283e51f1154a35257116753ca67a22",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "main-extraction",
+      "source_relative_path": "geochron_agent_v3/router.py",
+      "path": "versions/early_v3/geochron_agent_v3/router.py",
+      "sha256": "60ebf0cb943ee6367a12d00998a36b914e32f1e68abce248cdd7ba6fca8e626b",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "main-extraction",
+      "source_relative_path": "geochron_agent_v3/service.py",
+      "path": "versions/early_v3/geochron_agent_v3/service.py",
+      "sha256": "885ab7060499485798ff7b6fa933a5c5b33e26aff89d4b1d8f07119ea083a2e0",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "main-extraction",
+      "source_relative_path": "geochron_agent_v3/state.py",
+      "path": "versions/early_v3/geochron_agent_v3/state.py",
+      "sha256": "2e199ab64bd0580e63b75a99a12d69b31364e43497a8b575a8324965545619bd",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "main-extraction",
+      "source_relative_path": "geochron_agent_v3/tools.py",
+      "path": "versions/early_v3/geochron_agent_v3/tools.py",
+      "sha256": "0ac7c74195c7c8be6ea291c8f0cdda77c9386ba1ac16eb6e2459e3c9eda203d6",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "main-extraction",
+      "source_relative_path": "tests/test_geochron_agent_v3.py",
+      "path": "versions/early_v3/tests/test_geochron_agent_v3.py",
+      "sha256": "4b3b073b996c223b8e0f3a280efb0d81e070a4640f5b3c3d0cc87cb23688cd57",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "previous-showcase-support",
+      "source_relative_path": "docs/validation/archived-graph-summary.json",
+      "path": "docs/validation/archived-graph-summary.json",
+      "sha256": "9aa7a555ef17b46cbf983b768bd04d6ee99e79862455552f4756dc887e0852af",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "previous-showcase-support",
+      "source_relative_path": "docs/validation/table-path-rerun.json",
+      "path": "docs/validation/table-path-rerun.json",
+      "sha256": "93894d3f4684a815ef6373c61db3f73c51bcd3431e06a315eb5b10f12d0321ae",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "previous-showcase-support",
+      "source_relative_path": "examples/__init__.py",
+      "path": "examples/__init__.py",
+      "sha256": "5b83abb287f9acf954204bd910d6fd09598088b0233c8748857feb9b5a9131ff",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "previous-showcase-support",
+      "source_relative_path": "examples/fixtures/synthetic_delta.json",
+      "path": "examples/fixtures/synthetic_delta.json",
+      "sha256": "6833d7d47f0fb27f53d374b02b5851be80b95e3feb5bb8795ae0fc03e99d3a23",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "previous-showcase-support",
+      "source_relative_path": "examples/graph_demo.py",
+      "path": "examples/graph_demo.py",
+      "sha256": "bb72ca2030bda833bf69aa95d704f89de9052aae91135266f8691d51a2681bc1",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "previous-showcase-support",
+      "source_relative_path": "examples/mcp_client.example.json",
+      "path": "examples/mcp_client.example.json",
+      "sha256": "afc37bbd16e4ba96df3b68bdf1f693fa1ba6646cb0bdcf477fcdd47cb68c74cf",
+      "treatment": "presentation-only path and optional dependency selection",
+      "source_sha256": "2d57c6ac4e8d3cf85b4b61f1e64d5279fc6fbb7efae392cc8c5e58e5d31e246f"
+    },
+    {
+      "source_snapshot": "previous-showcase-support",
+      "source_relative_path": "examples/offline_demo.py",
+      "path": "examples/offline_demo.py",
+      "sha256": "f80c174e6003afe331e28109cb6dbadd44b69b33ef00838f213d6ca7600279f4",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "previous-showcase-support",
+      "source_relative_path": "examples/run_live.py",
+      "path": "examples/run_live.py",
+      "sha256": "a5cec0340ca687212a8aa74c891cf0b94c234e4939f76f7dcb1777f5e0a30b76",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "previous-showcase-support",
+      "source_relative_path": "research/__init__.py",
+      "path": "research/__init__.py",
+      "sha256": "aeb9b8b14389eecd5bc6f5a4ceb3d070b95c22b69a174f912e999c5cff3445cc",
+      "treatment": "byte-identical"
+    },
+    {
+      "source_snapshot": "previous-showcase-support",
+      "source_relative_path": "research/seeded_graph/__init__.py",
+      "path": "research/seeded_graph/__init__.py",
+      "sha256": "aeb9b8b14389eecd5bc6f5a4ceb3d070b95c22b69a174f912e999c5cff3445cc",
+      "treatment": "byte-identical"
+    }
+  ]
+}

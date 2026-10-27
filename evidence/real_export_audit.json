@@ -1,0 +1,20 @@
+{
+  "scope": "Existing main output/json collection; mechanical parent-key audit, not scientific extraction accuracy",
+  "input_final_files": 21,
+  "duplicate_resulting_paper_ids": 2,
+  "source_sample_records": 168,
+  "unique_paper_sample_keys": 162,
+  "model_calls": 0,
+  "exported_rows": {
+    "reference": 21,
+    "samples": 168,
+    "observations": 1310,
+    "measure_events": 161
+  },
+  "rows_without_source_parent_key": {
+    "samples": 0,
+    "observations": 0,
+    "measure_events": 0
+  },
+  "unique_reference_ids_in_export": 19
+}
