@@ -101,3 +101,5 @@ docs/ / evidence/ / provenance/                     Method, evidence and source 
 The twelve main source modules and selected historical Agent/graph files are copied byte-for-byte. Added files provide presentation, packaging, fictional fixtures, local checks and guarded run/export wrappers. Component-specific Git history is unavailable for the untracked main source folder, so no commit-based personal-authorship claim is made. [Source manifest](provenance/source_manifest.json) · [Contribution and preservation boundaries](docs/provenance.md).
 
 Real paper corpora, raw extraction outputs, credentials, model weights and private environments are excluded. The project distribution license and contributor attribution remain for owner confirmation in [LICENSE_PENDING.md](LICENSE_PENDING.md). This is a local review candidate; no repository or website has been published.
+
+Credential configuration and release checks: [Security guide](docs/security.md).
