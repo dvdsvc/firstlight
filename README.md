@@ -8,11 +8,13 @@ This project extracts samples, analytical spots, ages, uncertainties and their r
 
 It began as a modular extraction pipeline for a research database. Batch processing brought attention to a question that is harder to assess than JSON validity: **a language model can produce a well-formed, plausible result while omitting information that the source document requires it to retain.** Alongside staged extraction, the project explores known-answer controls and document-graph methods for recovering candidate relations.
 
+**Direct links to methods and code:** [Known-answer controls](geochron_agent_v3/honeypot.py) · [Document-graph recovery](research/seeded_graph/seeded_document_forest.py) · [Staged extraction](pipeline.py) · [Experiments and validation](docs/validation.md)
+
 ## 1. Motivation: Valid Structure Does Not Establish Completeness
 
-Scientific extraction requires both recognizing values and preserving their ownership and meaning. An age must remain associated with the correct sample, analytical method, uncertainty and geological interpretation. Multiple ages for one sample should not be reduced to a representative value without justification.
+**External evidence illustrates the difficulty.** In [Peng et al. (2026), GeoExtractor](https://doi.org/10.1038/s41598-026-74865-x), the multi-agent method achieved **54.34% field-level recall and 67.11% F1** on the GEOROC geochemistry extraction benchmark; **omissions accounted for 90.6% of its extraction errors** on that dataset (Table 2 and Error Analysis). Even a purpose-built multistage framework can leave many fields unextracted. These figures are **GeoExtractor's GEOROC results**, not FirstLight error rates, and should not be extrapolated directly to geochronology sample–age bindings.
 
-Early exploration involved triples, BERT-NER, GLiNER, word-frequency analysis and masked-language-model scoring. For geochronological identifiers, place names, ordinary entities and parsing artifacts could enter the candidate set. Subsequent work moved toward generative LLM extraction and staged handling of complex outputs.
+Scientific extraction requires both recognizing values and preserving their ownership and meaning. An age must remain associated with the correct sample, analytical method, uncertainty and geological interpretation. Multiple ages for one sample should not be reduced to a representative value without justification.
 
 The early research account also describes several observations:
 
@@ -22,7 +24,98 @@ The early research account also describes several observations:
 
 These observations motivate a hypothesis: **under a high structured-output burden, a model may substitute domain-plausible summarization for the exhaustive enumeration required by the task, leaving omissions that format checks cannot detect.** Code and logs for the early method and role-prompt comparisons remain to be archived. They are retained here as research motivation; the available evidence does not isolate the effects of output burden, prompting and model priors.
 
-## 2. Staged Extraction Pipeline
+## 2. Known-Answer Controls: Detecting Omissions Without Complete Ground Truth
+
+Without exhaustive annotations, it is difficult to identify records that were never extracted. Format validation can establish whether a response is legal, but cannot determine which source relations remain undiscovered. The project implements **Known-Answer Controls / Honeypot** to provide locally testable observations of an extraction run.
+
+### 2.1 Method and Control Cases
+
+Preconstructed passages with known relations are inserted into the document text visible to the model. The ordinary extraction process runs on this augmented text, and its output is compared with the expected relations. The original paper file is unchanged; expected answers and insertion coordinates are retained outside the model input.
+
+```mermaid
+flowchart LR
+    A[Select a source anchor] --> B[Insert control text]
+    B --> C[Run extraction]
+    C --> D[Compare expected relations]
+    D --> E[Record diagnostics and follow-up tasks]
+    C --> F[Strip control records]
+    F --> G[Write real extraction state]
+```
+
+The implementation contains three U-Pb control templates with five expected relations:
+
+| Control case | Target failure |
+|---|---|
+| Two independent age results for one sample | Selective retention, merging or omission |
+| Distinct samples in one passage | Incorrect sample–age binding |
+| Typographic variations in age and uncertainty | Missed records due to parentheses, spacing or related formatting |
+
+If only one of two ages for a control sample is returned, a missing relation is detected even when the JSON is valid. Comparison also checks the age–uncertainty pair, isotope system, sample identity and self/cited source scope. Implemented diagnostics cover missing, merged, misbound and misrouted relations, source confusion and parsing noise.
+
+Control samples and dependent records are stripped before the ordinary state reducer receives a delta. The structural-placement utility supports the three-template suite; the current controller uses router-selected source anchors and inserts at most one control per profile, skipping anchors that fail its checks. [Honeypot implementation](geochron_agent_v3/honeypot.py) · [Control mechanism](docs/agent_controls.md)
+
+### 2.2 Observability and Scope
+
+Known controls provide a local observation of extraction reliability without a complete gold annotation for the paper. This is useful in batch workflows where reviewing every paper is costly. Failures can identify relation types or locations requiring attention and supply context for follow-up extraction.
+
+Passing a control establishes success on that control task. Its association with omissions in real records, and the sensitivity and specificity of the diagnostics, still require calibration. A control pass rate cannot directly be converted into full-document recall.
+
+## 3. Seeded Document-Graph Recovery: Finding Missing Candidate Relations
+
+A complementary approach uses document structure: **text and tables can share a weighted graph representation, with tables contributing rows, columns, cells and repeated record patterns.** Trusted local relations constrain this structure and guide the search for unbound data.
+
+### 3.1 Document Representation
+
+The implementation parses DOCX XML into the following graph elements:
+
+| Element | Document object or relation |
+|---|---|
+| Text nodes | Body sentences |
+| Cell and row nodes | Table positions and row structure |
+| Entity roots | Samples identified in the earlier extraction |
+| Value nodes | Explicit value–uncertainty pairs and candidate pairs from adjacent scalar cells |
+| Weighted edges | Text adjacency, table geometry, entity mentions and value membership |
+
+Costs distinguish types of structural connections. Samples connect directly to their explicit mentions; cross-sentence, cross-paragraph and cross-cell relations follow the relevant structural edges. Numbered headings impose local boundaries. Weights and thresholds are heuristic choices in the current experiment.
+
+### 3.2 From Known Relations to Candidates
+
+The repository's synthetic example uses this fictional table:
+
+| Sample | Age (Ma) | Uncertainty |
+|---|---:|---:|
+| A101 | 120 | 1 |
+| A102 | 130 | 2 |
+| A103 | 140 | 3 |
+
+Suppose the earlier extraction identified all three samples but bound an age only for `A101 → 120 ± 1`. That trusted relation supplies a structural seed. Three methods then contribute to candidate recovery:
+
+1. **Least-cost grounding.** Dijkstra searches from a sample root to reachable occurrences of the matching value–uncertainty pair, chooses the lowest-cost occurrence and installs a low-resistance seed-binding channel.
+2. **Structural template transfer.** Relative row/column offsets between the seed sample and its age/uncertainty cells are transferred to other known sample cells in the same table.
+3. **Minimum-energy propagation.** Sample roots form fixed boundaries for a graph-Laplacian harmonic extension that minimizes Dirichlet energy and assesses associations between value candidates and samples.
+
+```mermaid
+flowchart LR
+    D[DOCX text and tables] --> G[Weighted document graph]
+    S[Trusted extraction relations] --> A[Dijkstra grounding and seed binding]
+    G --> A
+    A --> P[Template transfer and harmonic extension]
+    P --> C[Candidate relations and source evidence]
+```
+
+The output is a candidate relation set with provenance, template paths, graph potentials and energy scores derived from those potentials. Dijkstra grounds the seeds; the Laplacian and structural templates extend the search. Competing candidates can remain in the output and require review.
+
+### 3.3 Rationale and Current Results
+
+Repeated table patterns contain explicit structural information once a reliable local relation is available. Encoding that information as a graph allows an existing result to guide subsequent search, reducing the need to regenerate an extraction for the whole paper.
+
+The synthetic demo invokes the original graph implementation and checks that the `A101 → 120 ± 1` seed produces the target candidates `A102 → 130 ± 2` and `A103 → 140 ± 3`. Historical summaries also record candidate production on real papers, but exhaustive annotations are unavailable for measuring recovery precision or added recall.
+
+This module currently runs independently on a legacy extraction seed format and does not write back through the controller. It depends on trusted seeds, document parsing and repeated structure. The effects of incorrect seeds and OCR noise on propagation still require evaluation. [Document-graph implementation](research/seeded_graph/seeded_document_forest.py) · [Method and data contracts](docs/graph_recovery.md) · [Synthetic example](examples/graph_demo.py)
+
+## 4. Engineering Foundation: Staged Extraction and Stateful Agents
+
+### 4.1 Staged Extraction Pipeline
 
 The main workflow first establishes an entity tree, then assigns attribute and measurement completion to separate stages. Each stage receives the paper text and the relevant tree, with deterministic rules governing the final merge.
 
@@ -51,102 +144,15 @@ Staging reduces the complexity of individual outputs and assigns responsibility 
 
 Specific implementation issues remain: R2c aligns events by list position; spots omitted from an R2b response can also be absent from the final result; and the main API requests JSON objects without enforcing the declared schemas as strict server-side constraints. These issues require evaluation alongside the intended field protection. [Main pipeline](pipeline.py) · [Methods and exact merge rules](docs/methods.md) · [Exports](docs/exports.md)
 
-## 3. Known-Answer Controls for Batch Extraction
+**Earlier technical explorations.** Early exploration involved triples, BERT-NER, GLiNER, word-frequency analysis and masked-language-model scoring. For geochronological identifiers, place names, ordinary entities and parsing artifacts could enter the candidate set. Subsequent work moved toward generative LLM extraction and staged handling of complex outputs.
 
-Without exhaustive annotations, it is difficult to identify records that were never extracted. Format validation can establish whether a response is legal, but cannot determine which source relations remain undiscovered. The project implements **Known-Answer Controls / Honeypot** to provide locally testable observations of an extraction run.
-
-### 3.1 Method and Control Cases
-
-Preconstructed passages with known relations are inserted into the document text visible to the model. The ordinary extraction process runs on this augmented text, and its output is compared with the expected relations. The original paper file is unchanged; expected answers and insertion coordinates are retained outside the model input.
-
-```mermaid
-flowchart LR
-    A[Select a source anchor] --> B[Insert control text]
-    B --> C[Run extraction]
-    C --> D[Compare expected relations]
-    D --> E[Record diagnostics and follow-up tasks]
-    C --> F[Strip control records]
-    F --> G[Write real extraction state]
-```
-
-The implementation contains three U-Pb control templates with five expected relations:
-
-| Control case | Target failure |
-|---|---|
-| Two independent age results for one sample | Selective retention, merging or omission |
-| Distinct samples in one passage | Incorrect sample–age binding |
-| Typographic variations in age and uncertainty | Missed records due to parentheses, spacing or related formatting |
-
-If only one of two ages for a control sample is returned, a missing relation is detected even when the JSON is valid. Comparison also checks the age–uncertainty pair, isotope system, sample identity and self/cited source scope. Implemented diagnostics cover missing, merged, misbound and misrouted relations, source confusion and parsing noise.
-
-Control samples and dependent records are stripped before the ordinary state reducer receives a delta. The structural-placement utility supports the three-template suite; the current controller uses router-selected source anchors and inserts at most one control per profile, skipping anchors that fail its checks. [Honeypot implementation](geochron_agent_v3/honeypot.py) · [Control mechanism](docs/agent_controls.md)
-
-### 3.2 Observability and Scope
-
-Known controls provide a local observation of extraction reliability without a complete gold annotation for the paper. This is useful in batch workflows where reviewing every paper is costly. Failures can identify relation types or locations requiring attention and supply context for follow-up extraction.
-
-Passing a control establishes success on that control task. Its association with omissions in real records, and the sensitivity and specificity of the diagnostics, still require calibration. A control pass rate cannot directly be converted into full-document recall.
-
-### 3.3 Stateful Agent and MCP Interface
+### 4.2 Stateful Agent and MCP Interface
 
 The engineering implementation uses a Python controller, an OpenAI-compatible model client and the official MCP Python SDK. The controller selects specialist profiles; specialist calls read the full text and return local deltas. The state reducer checks field, method and node-writing permissions, while retaining conflicts, uncovered items and model-call artifacts.
 
 Known-answer controls are integrated into this execution path. A rejected initial write or failed control can trigger an `enrich_candidates` task, followed by coverage auditing within the configured budget. The MCP facade exposes profile lookup, delta validation, planning, extraction, control preparation/injection/evaluation and coverage-audit tools. Local orchestration continues to call Python functions directly.
 
 The registry contains 17 specialist field cards. Registration and real-paper validation of the corresponding methods are separate milestones. Current engineering evidence includes offline contract checks and an MCP stdio session; extraction quality requires evaluation for each method. [Controller](geochron_agent_v3/controller.py) · [State reducer](geochron_agent_v3/state.py) · [MCP interface](geochron_agent_v3/mcp_server.py)
-
-## 4. Least-Cost Recovery Through a Weighted Document Graph
-
-A complementary approach uses document structure: **text and tables can share a weighted graph representation, with tables contributing rows, columns, cells and repeated record patterns.** Trusted local relations constrain this structure and guide the search for unbound data.
-
-### 4.1 Document Representation
-
-The implementation parses DOCX XML into the following graph elements:
-
-| Element | Document object or relation |
-|---|---|
-| Text nodes | Body sentences |
-| Cell and row nodes | Table positions and row structure |
-| Entity roots | Samples identified in the earlier extraction |
-| Value nodes | Explicit value–uncertainty pairs and candidate pairs from adjacent scalar cells |
-| Weighted edges | Text adjacency, table geometry, entity mentions and value membership |
-
-Costs distinguish types of structural connections. Samples connect directly to their explicit mentions; cross-sentence, cross-paragraph and cross-cell relations follow the relevant structural edges. Numbered headings impose local boundaries. Weights and thresholds are heuristic choices in the current experiment.
-
-### 4.2 From Known Relations to Candidates
-
-The repository's synthetic example uses this fictional table:
-
-| Sample | Age (Ma) | Uncertainty |
-|---|---:|---:|
-| A101 | 120 | 1 |
-| A102 | 130 | 2 |
-| A103 | 140 | 3 |
-
-Suppose the earlier extraction identified all three samples but bound an age only for `A101 → 120 ± 1`. That trusted relation supplies a structural seed. Three methods then contribute to candidate recovery:
-
-1. **Least-cost grounding.** Dijkstra searches from a sample root to reachable occurrences of the matching value–uncertainty pair, chooses the lowest-cost occurrence and installs a low-resistance seed-binding channel.
-2. **Structural template transfer.** Relative row/column offsets between the seed sample and its age/uncertainty cells are transferred to other known sample cells in the same table.
-3. **Minimum-energy propagation.** Sample roots form fixed boundaries for a graph-Laplacian harmonic extension that minimizes Dirichlet energy and assesses associations between value candidates and samples.
-
-```mermaid
-flowchart LR
-    D[DOCX text and tables] --> G[Weighted document graph]
-    S[Trusted extraction relations] --> A[Dijkstra grounding and seed binding]
-    G --> A
-    A --> P[Template transfer and harmonic extension]
-    P --> C[Candidate relations and source evidence]
-```
-
-The output is a candidate relation set with provenance, template paths, graph potentials and energy scores derived from those potentials. Dijkstra grounds the seeds; the Laplacian and structural templates extend the search. Competing candidates can remain in the output and require review.
-
-### 4.3 Rationale and Current Results
-
-Repeated table patterns contain explicit structural information once a reliable local relation is available. Encoding that information as a graph allows an existing result to guide subsequent search, reducing the need to regenerate an extraction for the whole paper.
-
-The synthetic demo invokes the original graph implementation and checks that the `A101 → 120 ± 1` seed produces the target candidates `A102 → 130 ± 2` and `A103 → 140 ± 3`. Historical summaries also record candidate production on real papers, but exhaustive annotations are unavailable for measuring recovery precision or added recall.
-
-This module currently runs independently on a legacy extraction seed format and does not write back through the controller. It depends on trusted seeds, document parsing and repeated structure. The effects of incorrect seeds and OCR noise on propagation still require evaluation. [Document-graph implementation](research/seeded_graph/seeded_document_forest.py) · [Method and data contracts](docs/graph_recovery.md) · [Synthetic example](examples/graph_demo.py)
 
 ## 5. Modular Research and Technical Development
 
