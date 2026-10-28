@@ -102,4 +102,4 @@ The twelve main source modules and selected historical Agent/graph files are cop
 
 Real paper corpora, raw extraction outputs, credentials, model weights and private environments are excluded. The project distribution license and contributor attribution remain for owner confirmation in [LICENSE_PENDING.md](LICENSE_PENDING.md). This is a local review candidate; no repository or website has been published.
 
-Credential configuration and release checks: [Security guide](docs/security.md).
+Configuration: [Environment variables](docs/security.md).

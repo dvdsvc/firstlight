@@ -102,4 +102,4 @@ docs/ / evidence/ / provenance/                     方法、证据和来源映�
 
 实际论文语料、原始抽取文本、密钥、模型权重和私人环境未打包。项目许可证与贡献者署名仍需作者在 [LICENSE_PENDING.md](LICENSE_PENDING.md) 中确认。当前为本地审阅候选，尚未公开仓库或部署网站。
 
-凭据配置与发布前检查：[安全说明](docs/security.md)。
+运行配置：[环境变量](docs/security.md)。
