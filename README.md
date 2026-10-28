@@ -1,6 +1,6 @@
-# Structured Extract: Scientific Information Extraction and Reliability
+# FirstLight
 
-**Scientific Information Extraction · Known-Answer Controls · Graph-Based Relation Recovery**
+**Exploring Scientific Information Extraction with Known-Answer Controls and Document-Graph Recovery.**
 
 [English](README.md) · [简体中文](README.zh-CN.md)
 
@@ -160,7 +160,7 @@ The project developed through problems encountered in practical extraction, prod
 | Document-graph recovery | How can existing results guide a search for missing relations? | Dijkstra grounding, structural templates and graph-Laplacian propagation |
 | Small-model adaptation, a related independent project | How can domain training support extraction? | Generative models, LoRA, CPT/SFT and extraction-strategy experiments |
 
-These directions share an application domain but use different data contracts. The main staged workflow, `pipeline_v2.py`, early incremental v3 and current control/MCP snapshot are retained separately. Agent state does not yet feed the legacy exporter, and graph candidates are not automatically written back. Small-model training and experiments remain in a [separate repository](https://github.com/dvdsvc/scientific-document-small-model-adaptation). [Version relationships](docs/versions.md) · [Provenance and preservation](docs/provenance.md)
+These directions share an application domain but use different data contracts. The main staged workflow, `pipeline_v2.py`, early incremental v3 and current control/MCP snapshot are retained separately. Agent state does not yet feed the legacy exporter, and graph candidates are not automatically written back. Small-model training and experiments remain in a [separate repository](https://github.com/dvdsvc/sigil). [Version relationships](docs/versions.md) · [Provenance and preservation](docs/provenance.md)
 
 ## 6. Experimental Status and Next Steps
 

@@ -1,6 +1,6 @@
-# Structured Extract：科学文献结构化抽取与可靠性探索
+# FirstLight
 
-**Scientific Information Extraction · Known-Answer Controls · Graph-Based Relation Recovery**
+**探索科学文献结构化抽取、已知答案校验与文档图关系恢复。**
 
 [English](README.md) · [简体中文](README.zh-CN.md)
 
@@ -160,7 +160,7 @@ flowchart LR
 | 文档图恢复 | 如何利用已有结果寻找缺失关系 | Dijkstra 定位、结构模板、图拉普拉斯传播 |
 | 小模型适配（相关独立项目） | 如何通过领域训练改善抽取能力 | 生成式模型、LoRA、CPT／SFT 与抽取策略实验 |
 
-这些方向共享科学文献抽取背景，但使用不同的数据契约。主分阶段流程、`pipeline_v2.py`、早期增量 v3 和当前控制／MCP 快照在仓库中分别保留；Agent 状态尚未接通旧版导出器，图候选也尚未自动写回。小模型训练与实验保留在[独立仓库](https://github.com/dvdsvc/scientific-document-small-model-adaptation)。[版本关系](docs/versions.md) · [来源与保留边界](docs/provenance.md)
+这些方向共享科学文献抽取背景，但使用不同的数据契约。主分阶段流程、`pipeline_v2.py`、早期增量 v3 和当前控制／MCP 快照在仓库中分别保留；Agent 状态尚未接通旧版导出器，图候选也尚未自动写回。小模型训练与实验保留在[独立仓库](https://github.com/dvdsvc/sigil)。[版本关系](docs/versions.md) · [来源与保留边界](docs/provenance.md)
 
 ## 6. 实验现状与下一步
 
