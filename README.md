@@ -2,11 +2,9 @@
 
 **Exploring Scientific Information Extraction with Known-Answer Controls and Document-Graph Recovery.**
 
-[English](README.md) · [简体中文](README.zh-CN.md)
+**English** · [简体中文](README.zh-CN.md)
 
-This project extracts samples, analytical spots, ages, uncertainties and their relationships from geochronology papers, organizing text and table contents into records for subsequent scientific analysis.
-
-It began as a modular extraction pipeline for a research database. Batch processing brought attention to a question that is harder to assess than JSON validity: **a language model can produce a well-formed, plausible result while omitting information that the source document requires it to retain.** Alongside staged extraction, the project explores known-answer controls and document-graph methods for recovering candidate relations.
+**Research question:** How can structured extraction detect missing records and incorrect entity–value bindings? **Method:** Staged LLM extraction with constrained merging, known-answer controls through an Agent/MCP interface, and seeded least-cost document-graph recovery. **Key findings:** The archive contains 310 final JSON outputs; controlled examples exercise omission and misbinding detection, and one seed recovers two target relations in the synthetic graph example.
 
 **Direct links to methods and code:** [Known-answer controls](geochron_agent_v3/honeypot.py) · [Document-graph recovery](research/seeded_graph/seeded_document_forest.py) · [Staged extraction](pipeline.py) · [Experiments and validation](docs/validation.md)
 
